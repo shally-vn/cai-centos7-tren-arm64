@@ -103,4 +103,3 @@ else
 clear
 curl -k http://get.vpssim.vn -o vpssim && sh vpssim
 fi
-s

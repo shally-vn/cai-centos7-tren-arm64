@@ -83,7 +83,7 @@ done
 if [ "$luachon" = "caidatvpssim" ]; then
 echo "========================================================================="
 echo "OK, Please wait ...."; sleep 3
-checkurlstt=$(curl -o /dev/null --silent --head --write-out '%{http_code}' "https://github" )
+checkurlstt=$(curl -o /dev/null --silent --head --write-out '%{http_code}' "https://raw.githubusercontent.com/shally-vn/centos7/master/vpssim-setup.sh" )
 if [[ "$checkurlstt" == "200" ]]; then
 curl -k https://raw.githubusercontent.com/shally-vn/centos7/master/vpssim-setup.sh -o /etc/vpssim/.tmp/vpssim-setup.sh
 else

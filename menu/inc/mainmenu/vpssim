@@ -1,0 +1,68 @@
+#!/bin/sh 
+. /home/vpssim.conf
+if [ $(id -u) != "0" ]; then
+    printf "Co loi ! VPSSIM chi chay tren user root !\n"
+    exit
+fi
+
+#Check dung luong disc
+/etc/vpssim/menu/menucheck/vpssim-menu-check-dung-luong-disc
+## Check tmp
+/etc/vpssim/menu/menucheck/vpssim-menu-check-tmp
+##Check Nginx Update
+/etc/vpssim/menu/menucheck/vpssim-menu-check-nginx-update
+##Check VPSSIM Update
+/etc/vpssim/menu/menucheck/vpssim-menu-check-vpssim-update
+##Check CSF
+/etc/vpssim/menu/menucheck/vpssim-menu-check-csf-ip
+##Last check menu
+/etc/vpssim/menu/menucheck/vpssim-menu-last-check
+prompt="Nhap lua chon cua ban (0-Thoat): "
+options=("Them Website & Code" "Xoa website" "Backup & Restore Code" "Quan Ly Database" "Quan Ly phpMyAdmin" "Quan Ly Zend OPcache" "Quan Ly Memcached" "Quan Ly Redis Cache" "Quan Ly FTP Account" "Quan Ly Swap" "Quan Ly Cronjob" "Quan Ly File Log" "Quan Ly Google PageSpeed" "Config Cau Hinh PHP" "Wordpress Blog Tools" "Bao Mat Server & Website " "Sao Luu Du Lieu Toi VPS Backup" "Quan Ly Resilio Sync" "Backup VPS To Google Drive" "Cai Dat File Manager" "Cai Dat Net2FTP" "Cai Dat MonstaFTP" "Cai Dat NetData" "Cai Dat FreeSSL (Let's Encrypt)" "Cai Dat PaidSSL (Comodo...)" "Tien ich - Addons" "Update System (Nginx,PHP...)" "Cau Hinh Lai VPS (PHP & MySQL)" "Change Timezone Server & PHP" "Clear All Caches" "Check Server Status & Info" "Auto Send eMail Service Status" "Copy Du Lieu Sang VPS Moi" "Update VPSSIM" "Change Language To EngLish" "Dang Ky Business Version")
+/etc/vpssim/menu/menucheck/vpssim-show-menu-version   
+PS3="$prompt"
+select opt in "${options[@]}" ; do 
+
+    case "$REPLY" in
+
+	1) /etc/vpssim/menu/childmenu/vpssim-befor-them-website-menu;;
+    2) /etc/vpssim/menu/vpssim-befor-xoa-website;;
+    3) /etc/vpssim/menu/childmenu/vpssim-sao-luu;;
+    4) /etc/vpssim/menu/childmenu/vpssim-befor-them-xoa-database;;
+    5) /etc/vpssim/menu/childmenu/vpssim-phpmyadmin-menu;;
+    6) /etc/vpssim/menu/childmenu/vpssim-before-opcache;;
+    7) /etc/vpssim/menu/childmenu/vpssim-before-memcache-menu;;
+    8) /etc/vpssim/menu/childmenu/vpssim-redis-befor-menu;;
+    9) /etc/vpssim/menu/childmenu/vpssim-ftpserver-menu;;
+    10 )/etc/vpssim/menu/childmenu/vpssim-them-xoa-swap-vps-menu;;
+    11) /etc/vpssim/menu/childmenu/vpssim-cronjob-menu;;
+    12) /etc/vpssim/menu/childmenu/vpssim-eroor-menu;;
+    13) /etc/vpssim/menu/childmenu/vpssim-pagespeed-menu;;
+    14) /etc/vpssim/menu/childmenu/vpssim-befor-vpssim-config-php.ini-menu;;
+    15) /etc/vpssim/menu/childmenu/vpssim-wordpress-tools-menu;;
+    16) /etc/vpssim/menu/childmenu/vpssim-bao-mat-server-website-menu;;
+    17) /etc/vpssim/menu/childmenu/vpssim-befor-rsync;;
+    18) /etc/vpssim/menu/childmenu/vpssim-rslisync-menu;;
+    19) /etc/vpssim/menu/vpssim-befor-rclone-menu;;
+    20) /etc/vpssim/menu/childmenu/vpssim-web-upload-menu;;
+    21) /etc/vpssim/menu/childmenu/vpssim-net2ftp-menu;;
+    22) /etc/vpssim/menu/childmenu/vpssim-monstaftp-menu;;
+    23) /etc/vpssim/menu/childmenu/vpssim-netdata-menu;;
+    24) /etc/vpssim/menu/childmenu/vpssim-letsencrypt-menu;;
+    25) /etc/vpssim/menu/childmenu/vpssim-tao-paidssl-menu;;
+    26) /etc/vpssim/menu/childmenu/vpssim-tien-ich;;
+    27) /etc/vpssim/menu/childmenu/vpssim-update-upgrade-service-menu;;
+    28) /etc/vpssim/menu/vpssim-befor-re-config-cau-hinh-lai-vps-menu;;
+    29) /etc/vpssim/menu/vpssim-thay-doi-timezone-server-php-menu;;
+    30) /etc/vpssim/menu/vpssim-clear-cache-xoa-cache-server;;
+    31) /etc/vpssim/menu/vpssim-kiem-tra-server-status-va-thong-tin-server-info;;
+    32) /etc/vpssim/menu/vpssim-auto-check-3-service-nginx-mysql-php-and-send-email;;
+    33) /etc/vpssim/menu/childmenu/vpssim-befor-vpssim-move-du-lieu-vps-sang-vps-moi-menu;;
+    34) /etc/vpssim/menu/vpssim-nang-cap-scripts;;
+    35) /etc/vpssim/menu/vpssim-thay-doi-ngon-ngu-menu;; 
+    36) /etc/vpssim/menu/vpssim-register-business-version;; 
+	0) /etc/vpssim/menu/script-thoat;;     
+    *) echo "Ban nhap sai, vui long nhap theo so thu tu tren menu !";continue;;
+
+    esac
+done

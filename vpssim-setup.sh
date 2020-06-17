@@ -70,7 +70,7 @@ echo "==========================================================================
 echo "$svport khong duoc de trong."
 echo "--------------------------------------------------------------------------"
 echo "Ban hay kiem tra lai !" 
-bash /etc/vpssim/.tmp/vpssim-setup
+bash /etc/vpssim/.tmp/vpssim-setup.sh
 exit
 fi
 if ! [[ $svport -ge 100 && $svport -le 65535  ]] ; then  
@@ -84,7 +84,7 @@ echo "Ban hay kiem tra lai !"
 echo "-------------------------------------------------------------------------"
 read -p "Nhan [Enter] de tiep tuc ..."
 clear
-bash /etc/vpssim/.tmp/vpssim-setup
+bash /etc/vpssim/.tmp/vpssim-setup.sh
 exit
 fi 
 echo "--------------------------------------------------------------------------"
@@ -97,7 +97,7 @@ echo "Ban nhap sai, vui long nhap lai!"
 echo "-------------------------------------------------------------------------"
 read -p "Nhan [Enter] de tiep tuc ..."
 clear
-bash /etc/vpssim/.tmp/vpssim-setup
+bash /etc/vpssim/.tmp/vpssim-setup.sh
 exit
 fi
 
@@ -110,7 +110,7 @@ echo "Ban vui long thu lai  !"
 echo "-------------------------------------------------------------------------"
 read -p "Nhan [Enter] de tiep tuc ..."
 clear
-bash /etc/vpssim/.tmp/vpssim-setup
+bash /etc/vpssim/.tmp/vpssim-setup.sh
 exit
 fi
 echo "-------------------------------------------------------------------------"
@@ -127,7 +127,7 @@ echo "Ban vui long thu lai !"
 echo "-------------------------------------------------------------------------"
 read -p "Nhan [Enter] de tiep tuc ..."
 clear
-bash /etc/vpssim/.tmp/vpssim-setup
+bash /etc/vpssim/.tmp/vpssim-setup.sh
 exit
 fi  
 
@@ -141,7 +141,7 @@ echo "Ban vui long thu lai !"
 echo "-------------------------------------------------------------------------"
 read -p "Nhan [Enter] de tiep tuc ..."
 clear
-bash /etc/vpssim/.tmp/vpssim-setup
+bash /etc/vpssim/.tmp/vpssim-setup.sh
 exit
 fi   
 echo "-------------------------------------------------------------------------"
@@ -158,7 +158,7 @@ echo "Ban vui long thu lai !"
 echo "-------------------------------------------------------------------------"
 read -p "Nhan [Enter] de tiep tuc ..."
 clear
-bash /etc/vpssim/.tmp/vpssim-setup
+bash /etc/vpssim/.tmp/vpssim-setup.sh
 exit
 fi  
 
@@ -172,7 +172,7 @@ echo "Ban vui long thu lai !"
 echo "-------------------------------------------------------------------------"
 read -p "Nhan [Enter] de tiep tuc ..."
 clear
-bash /etc/vpssim/.tmp/vpssim-setup
+bash /etc/vpssim/.tmp/vpssim-setup.sh
 exit
 fi  
 
@@ -332,7 +332,7 @@ echo "Chuan Bi Cai Dat VPSSIM ..."
 sleep 2
 else 
 clear
-rm -rf /root/install && bash /etc/vpssim/.tmp/vpssim-setup
+rm -rf /root/install && bash /etc/vpssim/.tmp/vpssim-setup.sh
 exit
 fi
 cat >> "/root/.bash_profile" <<END

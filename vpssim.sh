@@ -85,13 +85,13 @@ echo "========================================================================="
 echo "OK, Please wait ...."; sleep 3
 checkurlstt=$(curl -o /dev/null --silent --head --write-out '%{http_code}' "https://github" )
 if [[ "$checkurlstt" == "200" ]]; then
-curl -k https://github/vpssim-setup -o /etc/vpssim/.tmp/vpssim-setup
+curl -k https://raw.githubusercontent.com/shally-vn/centos7/master/vpssim-setup.sh -o /etc/vpssim/.tmp/vpssim-setup.sh
 else
-curl -k https://github/vpssim-setup -o /etc/vpssim/.tmp/vpssim-setup
+curl -k https://raw.githubusercontent.com/shally-vn/centos7/master/vpssim-setup.sh -o /etc/vpssim/.tmp/vpssim-setup.sh
 fi
-chmod +x /etc/vpssim/.tmp/vpssim-setup 
+chmod +x /etc/vpssim/.tmp/vpssim-setup.sh
 clear 
-bash /etc/vpssim/.tmp/vpssim-setup
+bash /etc/vpssim/.tmp/vpssim-setup.sh
 elif [ "$luachon" = "check" ]; then
 echo "========================================================================="
 echo "OK, Please wait ...."; sleep 3
@@ -101,5 +101,5 @@ clear
 curl -k https://vpssim.vn/script/vpssim/kiem-tra-test-vps -o testvps && sh testvps
 else
 clear
-curl -k https://raw.githubusercontent.com/shally-vn/centos7/master/vpssim.sh -o vpssim && sh vpssim
+curl -k https://raw.githubusercontent.com/shally-vn/centos7/master/vpssim.sh -o vpssim.sh && sh vpssim.sh
 fi

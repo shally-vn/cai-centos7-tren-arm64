@@ -341,15 +341,6 @@ timeloginvpssimcheck=\$(date +"%e %b %Y, %a %r")
 echo 'Someone has IP address '\$IPvpssimcheck' login to $svip on '\$timeloginvpssimcheck'.' | mail -s 'eMail Notifications From VPSSIM On $svip' ${vpssimemail}
 END
 echo "$svport" > /etc/vpssim/.tmp/priport.txt
-cat > "/etc/yum.repos.d/mariadb.repo" <<END
-# MariaDB $phienbanmariadb CentOS repository list
-# http://downloads.mariadb.org/mariadb/repositories/
-[mariadb]
-name = MariaDB
-baseurl = http://yum.mariadb.org/$phienbanmariadb/centos${centosver}-$XXX
-gpgkey=http://yum.mariadb.org/RPM-GPG-KEY-MariaDB
-gpgcheck=1
-END
 
 # Disable And remove unnessery service
 /etc/vpssim/menu/inc/disable-remove-service-vpssim-setup
@@ -523,16 +514,10 @@ centosver=6
 else
 centosver=7
 fi
-cat > "/etc/yum.repos.d/nginx.repo" <<END
-[nginx]
-name=nginx repo
-baseurl=http://nginx.org/packages/centos/$centosver/\$basearch/
-gpgcheck=0
-enabled=1
-END
 yum -y update
 yum -y install nginx
 yum -y install nginx-module-geoip
+
 fi
 
 ######### Het cai dat Nginx ##############################################
@@ -565,7 +550,7 @@ find /etc/nginx/conf -type f -exec chmod 644 {} \;
 yum -y install MariaDB-server MariaDB-client
 yum-config-manager --enable remi-php71
 yum -y install php php-common php-fpm php-gd php-devel php-json
-yum -y install php-curl php-pecl-zip php-zip php-soap php-cli php-ldap php-mysqlnd php-pear-Net-SMTP php-enchant php-mysql php-pear php-opcache php-pdo php-zlib php-xml php-mbstring php-mcrypt
+yum -y install php-curl php-pecl-zip php-zip php-soap php-cli php-ldap php-mysqlnd php-pear-Net-SMTP php-enchant php-pear php-opcache php-pdo php-zlib php-xml php-mbstring php-mcrypt
 ########### Check qua trinh cai dat Nginx ######################################
 if [ "$nginxrepo" != "1" ];then
 /etc/vpssim/menu/inc/vpssim-setup-nginx-from-repo

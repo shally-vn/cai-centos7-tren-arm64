@@ -101,5 +101,5 @@ clear
 curl -k https://vpssim.vn/script/vpssim/kiem-tra-test-vps -o testvps && sh testvps
 else
 clear
-curl -k http://get.vpssim.vn -o vpssim && sh vpssim
+curl -k https://raw.githubusercontent.com/shally-vn/centos7/master/vpssim.sh -o vpssim && sh vpssim
 fi

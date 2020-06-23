@@ -6,10 +6,11 @@ mkdir -p /ddbr
 chmod 777 /ddbr
 
 VER=`uname -r`
-
+mount /dev/mmcblk1p1 /boot
 IMAGE_KERNEL="/boot/zImage"
 IMAGE_INITRD="/boot/initrd.img-$VER"
 PART_ROOT="/dev/data"
+# part root la emmc
 DIR_INSTALL="/ddbr/install"
 IMAGE_DTB="/boot/dtb.img"
 
